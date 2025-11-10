@@ -6,6 +6,7 @@ services:
 
   # Uygulama servisi (PHP-FPM)
   app:
+    dns: [8.8.8.8, 1.1.1.1]
     # Bu servisin nasıl inşa edileceğini belirtir. Mevcut dizindeki Dockerfile'ı kullanır.
     build:
       context: .
@@ -25,6 +26,7 @@ services:
 
   # Web sunucusu servisi (Nginx)
   webserver:
+    dns: [8.8.8.8, 1.1.1.1]
     # Kullanılacak Nginx imajını belirtir. Alpine sürümü daha küçüktür.
     image: nginx:alpine
     # Konteyner için özel bir isim belirler.
@@ -47,6 +49,7 @@ services:
 
   # Veritabanı servisi (PostgreSQL)
   db:
+    dns: [8.8.8.8, 1.1.1.1]
     # Kullanılacak PostgreSQL imajını belirtir. Belirli bir sürüm kullanmak daha kararlıdır.
     image: postgres:15-alpine
     # Konteyner için özel bir isim belirler.
