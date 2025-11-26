@@ -4,13 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Exercise extends Model
 {
     function activities(){
         return $this->hasMany(Activity::class);
     }
-
-    function meals(){
-        return $this->hasMany(Meal::class);
-    }
 }
+

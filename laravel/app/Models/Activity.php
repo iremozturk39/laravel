@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Meal extends Model
+class Activity extends Model
 {
+    function exercise(){
+        return $this->belongsTo(Exercise::class);
+    }
+    
     function customer(){
         return $this->belongsTo(Customer::class);
-    }
-
-    function food(){
-        return $this->belongsTo(Food::class);
     }
 }
