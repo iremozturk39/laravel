@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('exercises', function (Blueprint $table) {
             $table->id();
+            $table->text('name');
+            $table->text('type');
+            $table->text('unit');
+            $table->integer('calorie');
             $table->timestamps();
         });
     }

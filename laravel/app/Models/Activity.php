@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
+    protected $guarded = ['id'];
     function exercise(){
         return $this->belongsTo(Exercise::class);
     }
