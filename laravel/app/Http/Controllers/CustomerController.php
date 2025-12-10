@@ -13,14 +13,14 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customer = Customer::where('id', 1)->get();
+        /*$customer = Customer::where('id', 1)->get();
         $customer[0]->update([
             'address' => 'Kadıköy'
-        ]);
+        ]);*/
         
         //$customer[0]->delete();
 
-        dd(Customer::all());
+        //dd(Customer::all());
         
 
         /*$customers = Customer::all();
@@ -29,6 +29,8 @@ class CustomerController extends Controller
             echo $customer->id . " - " . $customer->name . "<br />";
         }
         */
+        $customers = Customer::all();
+        return view('customers.list', compact('customers'));
     }
 
     /**

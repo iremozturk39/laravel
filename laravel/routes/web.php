@@ -1,31 +1,20 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TempController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\ExerciseController;
-use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\MealController;
-use App\Http\Controllers\FoodController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', function () {
-    return 'Hello Laravel!';    
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/hello/{name}/info', function ($name) {
-    return 'Hello ' . $name . ', welcome to Laravel!';
-})
-
-use App\Http\Controllers\TempController;
-Route::get('/tmp', [TempController::class, 'tmpFunction']);
-
-
-Route::resource('customers', CustomerController::class);
-Route::resource('exercises', ExerciseController::class);
-Route::resource('activities', ActivityController::class);
-Route::resource('meals', MealController::class);
-Route::resource('foods', FoodController::class);
+require __DIR__.'/auth.php';

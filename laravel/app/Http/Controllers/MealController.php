@@ -12,7 +12,7 @@ class MealController extends Controller
      */
     public function index()
     {
-        //
+        return view('meals.example');
     }
 
     /**
